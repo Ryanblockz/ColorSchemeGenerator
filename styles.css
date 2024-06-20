@@ -1,0 +1,52 @@
+body {
+    font-family: Arial;
+}
+
+.color-palate {
+    height: 50%;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+}
+
+
+#pal-1 {
+    width: 20%;
+    height: 90%;
+}
+
+#pal-2 {
+    width: 20%;
+    height: 90%;
+}
+
+#pal-3 {
+    width: 20%;
+    height: 90%;
+}
+
+#pal-3 {
+    width: 20%;
+    height: 90%;
+}
+
+#pal-4 {
+    width: 20%;
+    height: 90%;
+}
+
+#pal-5 {
+    width: 20%;
+    height: 90%;
+}
+
+.palate-hexes {
+    height: 20%;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+}
+
+/* #pal-hex-1 {
+
+} */
