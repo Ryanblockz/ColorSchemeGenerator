@@ -1,21 +1,27 @@
 const colorChoice = document.getElementById('color-choice')
 const schemeOption = document.getElementById('options')
-
+const numberOption = document.getElementById('number-selector')
+const colorPalate = document.getElementById('color-palate')
 
 document.getElementById('gen-button').addEventListener('click', function () {
-    fetch(`https://www.thecolorapi.com/scheme?hex=${colorChoice.value.replace("#", "")}&mode=${schemeOption.value}&count=5`)
+    fetch(`https://www.thecolorapi.com/scheme?hex=${colorChoice.value.replace("#", "")}&mode=${schemeOption.value}&count=${numberOption.value}`)
         .then(res => res.json())
         .then(data => {
-            document.getElementById('pal-1').style.backgroundColor = data.colors[0].hex.value
-            document.getElementById('pal-2').style.backgroundColor = data.colors[1].hex.value
-            document.getElementById('pal-3').style.backgroundColor = data.colors[2].hex.value
-            document.getElementById('pal-4').style.backgroundColor = data.colors[3].hex.value
-            document.getElementById('pal-5').style.backgroundColor = data.colors[4].hex.value
-            document.getElementById('pal-1').innerText = data.colors[0].hex.value
-            document.getElementById('pal-2').innerText = data.colors[1].hex.value
-            document.getElementById('pal-3').innerText = data.colors[2].hex.value
-            document.getElementById('pal-4').innerText = data.colors[3].hex.value
-            document.getElementById('pal-5').innerText = data.colors[4].hex.value
-
+            colorPalate.innerHTML = ""
+            for (let i = 0; i < data.colors.length; i++) {
+                let color = data.colors[i].hex.value
+                let element = document.createElement(`div`)
+                element.style.backgroundColor = color
+                element.innerText = color
+                element.addEventListener('click', function () {
+                    navigator.clipboard.writeText(color).then(() => {
+                        alert(`Copied ${color} to clipboard`)
+                    })
+                })
+                colorPalate.appendChild(element)
+            }
         })
 })
+
+
+
